@@ -122,11 +122,17 @@ def print_chain(chain):
 # Hint: Use the Timer() builtin function
 async def step_clock(dut):
 
+
     ######################
     # TODO: YOUR CODE HERE 
     ######################
 
-    pass
+    dut.clk.value = 1
+    await Timer(10,units = 'ns')
+    dut.clk.value = 0
+    await Timer(10,units = 'ns')
+
+    # pass
     
 
 #-------------------------------------------------------------------
@@ -137,12 +143,18 @@ async def step_clock(dut):
 #       the specified FF?
         
 async def input_chain_single(dut, bit, ff_index):
+    dut.scan_in.value = bit
+    for i in range(ff_index + 1):
+        step_clock(dut)
+
+
 
     ######################
     # TODO: YOUR CODE HERE 
     ######################
 
-    pass
+
+    # pass
     
 #-------------------------------------------------------------------
 
